@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Welcome, {{ session['username'] }}</h2>
+<a href="/predict"><button>Make a Prediction</button></a>
+<a href="/history"><button>View Previous Predictions</button></a>
+<a href="/logout"><button>Logout</button></a>
+{% endblock %}

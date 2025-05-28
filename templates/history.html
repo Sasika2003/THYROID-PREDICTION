@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Link to CSS -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+<div class="container">
+    <h2>Previous Predictions</h2>
+
+    {% if history %}
+    <table>
+        <tr>
+            <th>Age</th>
+            <th>TSH</th>
+            <th>T3</th>
+            <th>T4</th>
+            <th>TT4</th>
+            <th>FTI</th>
+            <th>Goitre</th>
+            <th>Result</th>
+            <th>Prediction Date</th>
+        </tr>
+        {% for record in history %}
+        <tr>
+            <td>{{ record.age }}</td>
+            <td>{{ record.tsh }}</td>
+            <td>{{ record.t3 }}</td>
+            <td>{{ record.t4 }}</td>
+            <td>{{ record.tt4 }}</td>
+            <td>{{ record.fti }}</td>
+            <td>{{ "Yes" if record.goitre == 1 else "No" }}</td>
+            <td>{{ record.result }}</td>
+            <td>{{ record.prediction_date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>No previous predictions found.</p>
+    {% endif %}
+
+    <br>
+    <a href="/home"><button>Back to Home</button></a>
+</div>
+{% endblock %}
